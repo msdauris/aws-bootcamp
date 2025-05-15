@@ -1,0 +1,95 @@
+###secure login 
+ssh -i MyDemoKeyPair.pem ec2-user@Public-IP-Address
+
+#### troubleshoot ssh###
+ssh -vvv -i your-key.pem ec2-user@your-instance-ip  
+
+ssh -i MyDemoKeyPair.pem ec2-user@Private-IP-Address
+
+###secure copy
+scp -i MyDemoKeyPair.pem MyDemoKeyPair.pem ec2-user@<Public-EC2-IP>:/home/ec2-user/
+
+###chmod
+chmod 400 MyDemoKeyPair.pem
+
+###curl 
+curl http://private-website-bucket.s3-website-<region>.amazonaws.com
+curl <Private-EC2-IP>
+
+##check ip
+curl ifconfig.me
+
+###aws
+aws configure
+$ aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: eu-west-1
+Default output format [None]: json
+
+###list s3 buckets
+aws s3 ls
+aws s3 ls --region eu-west-1
+
+####check ip address:
+aws ec2 describe-instances --instance-ids i-xxxxxxxxxxxxxxxxx --query "Reservations[*].Instances[*].PublicIpAddress"
+
+###Start an EC2 instance:
+aws ec2 start-instances --instance-ids <instance-id>
+aws ec2 start-instances --instance-ids i-1234567890abcdef --region eu-west-1
+
+###Stop an EC2 instance:
+aws ec2 stop-instances --instance-ids <instance-id>
+aws ec2 stop-instances --instance-ids i-1234567890abcdef --region eu-west-1
+
+###Reboot an EC2 instance:
+aws ec2 reboot-instances --instance-ids <instance-id>
+aws ec2 reboot-instances --instance-ids i-1234567890abcdef --region eu-west-1
+
+###Terminate an EC2 instance:
+aws ec2 terminate-instances --instance-ids <instance-id>
+
+###Get the status of an EC2 instance:
+aws ec2 describe-instance-status --instance-ids <instance-id>
+aws ec2 describe-instances --filters "Name=instance-state-name,Values=running" --region eu-west-1
+
+###List all running EC2 instances in the ap-southeast-1 region
+aws ec2 describe-instances --filters Name=instance-state-name,Values=running --region eu-west-1
+
+###Replace <instance-id> with the actual ID of the instance you want to check the status of.
+
+
+
+####extra common commands#### 
+| Command     | Description                                                                       | Example                                            |
+|-------------|-----------------------------------------------------------------------------------|----------------------------------------------------|
+| `host`      | Performs DNS lookups to find the IP address associated with a domain name.        | `host example.com`                                 |
+| `nslookup`  | Queries DNS servers for domain name or IP address information.                    | `nslookup example.com`                             |
+| `dig`       | Provides detailed DNS query information.                                          | `dig example.com`                                  |
+| `ping`      | Checks the reachability of a host on an IP network.                               | `ping example.com`                                 |
+| `ip addr`   | Displays or manipulates network interface IP addresses.                           | `ip addr show`                                     |
+| `ifconfig`  | Configures and displays network interface parameters (Unix-based systems).        | `ifconfig`                                         |
+| `ip route`  | Shows or manipulates the IP routing table.                                        | `ip route show`                                    |
+| `traceroute`| Displays the route packets take to reach a network host.                          | `traceroute example.com`                           |
+| `netstat`   | Displays network connections, routing tables, interface statistics, etc.          | `netstat -tuln`                                    |
+| `ss`        | Investigates sockets, showing detailed information.                               | `ss -tuln`                                         |
+| `curl`      | Transfers data from or to a server using various protocols (HTTP, FTP, etc.).     | `curl -I http://example.com`                       |
+| `wget`      | Downloads files from the web.                                                     | `wget http://example.com/file.zip`                 |
+| `telnet`    | Uses the Telnet protocol to communicate with another host.                        | `telnet example.com 80`                            |
+| `nc`(netcat)| Reads and writes data across network connections using TCP or UDP.                | `nc -zv example.com 80`                            |
+| `ethtool`   | Displays or changes Ethernet device settings.                                     | `ethtool eth0`                                     |
+| `df`        | Reports the amount of disk space used and available on filesystems.               | `df -h`                                            |
+| `du`        | Estimates file and directory space usage.                                         | `du -sh /path/to/directory`                        |
+| `top`       | Displays tasks and system resource usage in real-time.                            | `top`                                              |
+| `htop`      | Interactive process viewer for Unix systems.                                      | `htop`                                             |
+| `ps`        | Reports a snapshot of current processes.                                          | `ps aux`                                           |
+| `lsof`      | Lists open files and the processes that opened them.                              | `lsof`                                             |
+| `free`      | Displays the amount of free and used memory in the system.                        | `free -h`                                          |
+| `uptime`    | Tells how long the system has been running.                                       | `uptime`                                           |
+| `dmesg`     | Prints the kernel ring buffer messages.                                           | `dmesg`                                            |
+| `systemctl` | Manages systemd services.                                                         | `systemctl status service-name`                    |
+| `journalctl`| Views logs collected by the systemd journal.                                      | `journalctl -u service-name`                       |
+| `uname`     | Displays system information.                                                      | `uname -a`                                         |
+| `lsblk`     | Lists information about all available or the specified block devices.             | `lsblk`                                            |
+| `blkid`     | Locates/prints block device attributes.                                           | `blkid`                                            |
+| `fdisk`     | Manipulates disk partition tables.                                                | `fdisk -l`                                         |

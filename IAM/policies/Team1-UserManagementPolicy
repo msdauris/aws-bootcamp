@@ -1,0 +1,70 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateUser",
+                "iam:DeleteUser",
+                "iam:GetUser",
+                "iam:UpdateUser",
+                "iam:CreateLoginProfile",
+                "iam:DeleteLoginProfile",
+                "iam:UpdateLoginProfile",
+                "iam:AttachUserPolicy",
+                "iam:DetachUserPolicy",
+                "iam:CreateAccessKey",
+                "iam:DeleteAccessKey",
+                "iam:ListAccessKeys",
+                "iam:UpdateAccessKey",
+                "iam:ListGroupsForUser",
+                "iam:ListAttachedUserPolicies"
+            ],
+            "Resource": "arn:aws:iam::905418424006:user/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListUsers"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListGroups",
+                "iam:ListPolicies",
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion",
+                "iam:GetAccountPasswordPolicy"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:AddUserToGroup",
+                "iam:RemoveUserFromGroup"
+            ],
+            "Resource": "arn:aws:iam::905418424006:group/Team1*",
+            "Condition": {
+                "StringNotEquals": {
+                    "iam:PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "iam:AddUserToGroup",
+                "iam:RemoveUserFromGroup"
+            ],
+            "Resource": "arn:aws:iam::905418424006:group/AdminGroup"
+        }
+    ]
+}

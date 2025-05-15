@@ -1,0 +1,8 @@
+#!/bin/bash
+# use this for your user data
+# install httpd (linux version2)
+yum update -y
+yum install -y httpd
+systemctl start httpd
+systemctl enable httpd
+echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
