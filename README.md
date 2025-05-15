@@ -1,4 +1,4 @@
-# aws-essentials
+# aws-bootcamp
 
 A workshop
 
