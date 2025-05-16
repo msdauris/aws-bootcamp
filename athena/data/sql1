@@ -1,0 +1,30 @@
+Run Basic SQL Commands
+✅ Create a Table
+MySQL:
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    role VARCHAR(100)
+);
+PostgreSQL: use SERIAL instead of AUTO_INCREMENT.
+
+
+CREATE TABLE employees (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    role VARCHAR(100)
+);
+✅ Insert Data
+
+INSERT INTO employees (name, role) VALUES ('John Doe', 'Software Engineer');
+INSERT INTO employees (name, role) VALUES ('Jane Smith', 'Data Analyst');
+✅ Query Data
+
+SELECT * FROM employees;
+✅ Update a Record
+
+UPDATE employees SET role='Senior Engineer' WHERE name='John Doe';
+✅ Delete a Record
+
+DELETE FROM employees WHERE name='Jane Smith';
