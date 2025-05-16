@@ -1,0 +1,13 @@
+Run a basic query:  
+  
+SELECT * FROM employees;  
+📊 Step 5: Try SQL Filters & Aggregations  
+🔽 Filter by Department  
+SELECT * FROM employees WHERE department = 'Engineering';  
+📈 Average Salary per Department  
+SELECT department, AVG(salary) as avg_salary  
+FROM employees  
+GROUP BY department;  
+📊 Highest Salary  
+  
+SELECT name, salary FROM employees ORDER BY salary DESC LIMIT 1;  
