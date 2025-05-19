@@ -47,17 +47,17 @@ eu-west-1 Ireland
 
 
 By the end of Operation Cloudstrike, each recruit will have:<br>
-<br>🎨 Customized their AWS Console (theme + bookmarks)
-<br>🛡️ Created IAM user, role, and custom policy
-<br>🔍 Used IAM Policy Simulator to test access
-<br>💻 Launched an EC2 instance and connected via SSH
-<br>🔧 Installed a web server (Apache or Nginx)
-<br>💾 Attached and mounted an EBS volume
-<br>📦 Created and managed an S3 bucket
-<br>🔐 Applied S3 permissions and tested object access
-<br>⚖️ Set up an Application Load Balancer + listener rules
-<br>📈 Configured Auto Scaling Group and tested scale events
-<br>🗄️ Deployed an RDS instance and connected via CLI
-<br>📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)
-<br>🕵️ Queried structured data from S3 using Athena
+<br>-🎨 Customized their AWS Console (theme + bookmarks)
+<br>-🛡️ Created IAM user, role, and custom policy
+<br>-🔍 Used IAM Policy Simulator to test access
+<br>-💻 Launched an EC2 instance and connected via SSH
+<br>-🔧 Installed a web server (Apache or Nginx)
+<br>-💾 Attached and mounted an EBS volume
+<br>-📦 Created and managed an S3 bucket
+<br>-🔐 Applied S3 permissions and tested object access
+<br>-⚖️ Set up an Application Load Balancer + listener rules
+<br>-📈 Configured Auto Scaling Group and tested scale events
+<br>-🗄️ Deployed an RDS instance and connected via CLI
+<br>-📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)
+<br>-🕵️ Queried structured data from S3 using Athena
 
