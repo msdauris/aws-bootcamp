@@ -20,6 +20,18 @@ https://730492949633.signin.aws.amazon.com/console
 # AWS Region - LOCKED 
 eu-west-1 Ireland
 
+```text
+AWS Account
+├── IAM Users & Roles
+│
+├── VPC (default or custom)
+│   ├── EC2 Instance 1 (General use)
+│   ├── EC2 Instance 2 (For RDS access)
+│   ├── RDS (MySQL/Postgres)
+│   ├── S3 Bucket
+│   └── Glue Crawler → Athena Table
+```
+
 | **Team**       | **Users**      | **Users**     | **Users** | **Users** |
 |----------------|----------------|---------------|-----------|-----------|
 | Admins         | soyred_admin   |               |           |           |
@@ -44,7 +56,6 @@ eu-west-1 Ireland
 | All Accounts   | Public SG             | Allow SSH (22) from your IP (Restricts EC2 Connect) & Allow HTTP 80 from  (0.0.0.0/0)                                                  | Allow all traffic (0.0.0.0/0) |
 |                | Private SG            | Allow SSH (22) from Public SG/Private IP of Public aka Bastion Host                                                                    | Allow all traffic (0.0.0.0/0) |
 |                | Nat SG                | Allow HTTP (80) from VPC CIDR<br>Allow HTTPS (443) from VPC CIDR<br>Allow SSH (22) from VPC CIDR<br>Allow ALL ICMP-IPv4 from 0.0.0.0/0 | Allow all traffic (0.0.0.0/0) |
-
 
 By the end of Operation Cloudstrike, each recruit will have:<br>
 <br>-🎨 Customized their AWS Console (theme + bookmarks)
