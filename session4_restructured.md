@@ -6,7 +6,6 @@
 - [32. Connect to RDS from EC2](#32-connect-to-rds-from-ec2)
 - [33. Athena + S3 Querying](#33-athena--s3-querying)
 - [34. Session Checkpoint & Cleanup](#34-session-checkpoint--cleanup)
-- [35. Workshop Wrap-Up](#35-workshop-wrap-up)
 
 ---
 
@@ -679,4 +678,97 @@ SELECT name, salary FROM employees WHERE department = 'Engineering';
    - Empty bucket completely
 
 2. **Delete S3 Bucket**
-   - Select bucket
+   - Select bucket → **Delete**
+   - Type bucket name to confirm
+   - Wait for deletion completion
+
+### AWS Glue Cleanup
+
+1. **Delete Glue Tables**
+   - Glue Console → Databases → `employee_analytics_db`
+   - Select tables → **Delete**
+   - Confirm deletion
+
+2. **Delete Glue Database**
+   - Select database → **Delete**
+   - Confirm deletion
+
+3. **Delete Glue Crawlers**
+   - Glue Console → Crawlers
+   - Select `EmployeeDataCrawler` → **Delete**
+   - Confirm deletion
+
+### IAM Cleanup
+
+1. **Remove Custom IAM Roles**
+   - IAM Console → Roles
+   - Delete workshop-specific roles:
+     - `AWSGlueServiceRole-EmployeeCrawler`
+     - Any EC2 instance roles created
+
+2. **Delete IAM Policies** (if custom created)
+   - IAM Console → Policies
+   - Delete custom policies
+
+### Additional Cleanup Items
+
+1. **CloudWatch Alarms**
+   - CloudWatch Console → Alarms
+   - Delete any alarms created during workshop
+
+2. **VPC Resources** (if custom created)
+   - Only delete if created specifically for workshop
+   - Ensure no other resources depend on them
+
+#### Cost Verification
+
+1. **AWS Cost Explorer**
+   - Navigate to Cost Explorer
+   - Review charges for workshop day
+   - Verify all resources are terminated
+
+2. **Billing Dashboard**
+   - Check current month charges
+   - Set up billing alerts if not already configured
+
+#### Session Reflection
+
+### Key Learnings Achieved
+
+**RDS Mastery:**
+- ✅ Created production-ready RDS instance
+- ✅ Configured high availability and backup strategies
+- ✅ Established secure connectivity from EC2
+- ✅ Performed database operations and monitoring
+
+**Analytics Capabilities:**
+- ✅ Implemented serverless querying with Athena
+- ✅ Automated schema discovery using Glue
+- ✅ Executed complex SQL analytics on S3 data
+- ✅ Understood cost optimization strategies
+
+**Enterprise Readiness:**
+- ✅ Applied security best practices
+- ✅ Configured monitoring and alerting
+- ✅ Implemented backup and recovery procedures
+- ✅ Managed costs and resource cleanup
+
+### Technical Skills Developed
+
+**Database Administration:**
+- RDS instance configuration and management
+- MySQL/PostgreSQL client operations
+- Backup and snapshot management
+- Performance monitoring and scaling
+
+**Data Analytics:**
+- S3-based data lake architecture
+- ETL processes with AWS Glue
+- SQL analytics with Amazon Athena
+- Cost-effective serverless analytics
+
+**Security and Networking:**
+- VPC security group configuration
+- Database access control
+- IAM role and policy management
+- Network connectivity troubleshooting
