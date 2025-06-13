@@ -51,7 +51,7 @@ RDS provides managed database services that enable:
    - Choose **Standard Create** for full control
 
 2. **Database Identification**
-   - **DB instance identifier:** `myrds-db`
+   - **DB instance identifier:** `aws-bootcamp-[name]-myrds-db`
    - **Master username:** `admin`
    - **Master password:** Create secure password (8+ characters)
    - ✅ Store password securely
