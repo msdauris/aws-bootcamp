@@ -239,7 +239,7 @@ echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
 
 ### S3 Bucket Policies
 
-#### Static Website Bucket Policy
+#### Static Website Bucket Policy (CLARIFY)
 ```json
 {
   "Version": "2012-10-17",
@@ -253,7 +253,7 @@ echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
 }
 ```
 
-#### Application Access Policy
+#### Application Access Policy (CLARIFY)
 ```json
 {
   "Version": "2012-10-17",
