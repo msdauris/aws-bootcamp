@@ -1,38 +1,45 @@
 # aws-bootcamp
 
-<br>🪖 AWS Bootcamp: Your Mission Begins Now
-<br>The cloud collapsed. Only the skilled survived.
-<br>This 4-day AWS Bootcamp is your crash course in survival — built for those aiming to pass the Cloud Practitioner or prepare for the Solutions Architect exam.
-<br>No fluff. No theory marathons. Just critical AWS skills, fast.
+🪖 AWS Bootcamp: Your Mission Begins Now
 
-<br>✅ Launch EC2
-<br>✅ Store in S3
-<br>✅ Load balance, scale, secure
-<br>✅ Query, replicate, recover
+- The cloud collapsed. Only the skilled survived.
+- This 4-day AWS Bootcamp is your crash course in survival — built for those aiming to pass the Cloud Practitioner or prepare for the Solutions Architect exam.
+- No fluff. No theory marathons. Just critical AWS skills, fast.
 
-<br>Alone or with your squad, complete the hands-on drills. Earn your place. Build momentum. Stay sharp.
-<br>At the end? You’ll walk away with real AWS skills — and the fire to go further.
-<br>The world runs in the cloud now. Do your duty.
+### ✅ What You'll Master
+- Launch and connect to EC2
+- Store and secure data with S3
+- Load balance, scale, and recover
+- Query data via RDS and Athena
 
-#AWS Account
+- Alone or with your squad, complete the hands-on drills. Earn your place. Build momentum. Stay sharp.
+- At the end? You’ll walk away with real AWS skills — and the fire to go further.
+- The world runs in the cloud now. Do your duty.
+
+# AWS Account
 https://730492949633.signin.aws.amazon.com/console
 
 # AWS Region - LOCKED eu-west-1 Ireland
 
-By the end of Operation Cloudstrike, each recruit will have:<br>
-<br>-🎨 Customized their AWS Console (theme + bookmarks)
-<br>-🛡️ Created IAM user, role, and custom policy
-<br>-🔍 Used IAM Policy Simulator to test access
-<br>-💻 Launched an EC2 instance and connected via SSH
-<br>-🔧 Installed a web server (Apache or Nginx)
-<br>-💾 Attached and mounted an EBS volume
-<br>-📦 Created and managed an S3 bucket
-<br>-🔐 Applied S3 permissions and tested object access
-<br>-⚖️ Set up an Application Load Balancer + listener rules
-<br>-📈 Configured Auto Scaling Group and tested scale events
-<br>-🗄️ Deployed an RDS instance and connected via CLI
-<br>-📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)
-<br>-🕵️ Queried structured data from S3 using Athena
+### Tagging Convention
+All resources must include:
+- `Workshop=AWS-AOSE`
+- `Owner=[your-name-or-team]`
+
+By the end of Operation Cloudstrike, each recruit will have:-
+- 🎨 Customized their AWS Console (theme + bookmarks)
+- 🛡️ Created IAM user, role, and custom policy
+- 🔍 Used IAM Policy Simulator to test access
+- 💻 Launched an EC2 instance and connected via SSH
+- 🔧 Installed a web server (Apache or Nginx)
+- 💾 Attached and mounted an EBS volume
+- 📦 Created and managed an S3 bucket
+- 🔐 Applied S3 permissions and tested object access
+- ⚖️ Set up an Application Load Balancer + listener rules
+- 📈 Configured Auto Scaling Group and tested scale events
+- 🗄️ Deployed an RDS instance and connected via CLI
+- 📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)
+- 🕵️ Queried structured data from S3 using Athena
 
 
 # AWS Workshop Complete Network Setup Guide
