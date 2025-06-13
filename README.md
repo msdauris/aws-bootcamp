@@ -1,6 +1,6 @@
 ## 📋 Table of Contents
 
-1. [Information for Students](#aws-bootcamp)  
+1. [Information for Students](#-aws-bootcamp)  
 2. [Infrastructure & Architecture](#1-infrastructure-architecture)  
 3. [VPC and Networking Configuration](#2-vpc-and-networking-configuration)  
 4. [Security Group Configuration](#3-security-group-configuration)  
