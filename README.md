@@ -42,7 +42,7 @@ By the end of Operation Cloudstrike, each recruit will have:-
 - 🕵️ Queried structured data from S3 using Athena
 
 
-# AWS Workshop Complete Network Setup Guide
+# AWS Workshop Complete Network Setup Guide - for facilitators.
 
 ## Overview
 This comprehensive setup provides pre-configured networking infrastructure for the AWS Compute & Storage workshop, eliminating common networking issues and allowing students to focus on core AWS services.
@@ -56,7 +56,7 @@ This comprehensive setup provides pre-configured networking infrastructure for t
 Internet Gateway
     |
 ┌───▼────────────────────────────────────────────────────────┐
-│                aws-workshop-vpc (10.0.0.0/16)              │
+│                aws-bootcamp-vpc (10.0.0.0/16)              │
 │                                                            │
 │  ┌─────────────────────┐    ┌─────────────────────┐        │
 │  │   Public Subnet A   │    │   Public Subnet B   │        │
