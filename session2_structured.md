@@ -2,13 +2,13 @@
 
 ## 📋 Table of Contents
 
-- [9. EC2 Instance Management](#8-ec2-instance-management)
-- [10. EC2 Troubleshooting](#9-ec2-troubleshooting)
-- [11. EBS Volume Management](#10-ebs-volume-management)
-- [12. EBS Troubleshooting Scenarios](#11-ebs-troubleshooting-scenarios)
-- [13. S3 Bucket Operations](#12-s3-bucket-operations)
-- [14. S3 Advanced Features](#13-s3-advanced-features)
-- [15. Cleanup](#14-cleanup)
+- [9. EC2 Instance Management](#9-ec2-instance-management)
+- [10. EC2 Troubleshooting](#10-ec2-troubleshooting)
+- [11. EBS Volume Management](#11-ebs-volume-management)
+- [12. EBS Troubleshooting Scenarios](#12-ebs-troubleshooting-scenarios)
+- [13. S3 Bucket Operations](#13-s3-bucket-operations)
+- [14. S3 Advanced Features](#14-s3-advanced-features)
+- [15. Cleanup](#15-cleanup)
 
 ---
 
