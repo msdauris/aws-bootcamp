@@ -2,17 +2,17 @@
 
 ## 📋 Table of Contents
 
-- [8. EC2 Instance Management](#8-ec2-instance-management)
-- [9. EC2 Troubleshooting](#9-ec2-troubleshooting)
-- [10. EBS Volume Management](#10-ebs-volume-management)
-- [11. EBS Troubleshooting Scenarios](#11-ebs-troubleshooting-scenarios)
-- [12. S3 Bucket Operations](#12-s3-bucket-operations)
-- [13. S3 Advanced Features](#13-s3-advanced-features)
-- [14. Cleanup](#14-cleanup)
+- [9. EC2 Instance Management](#8-ec2-instance-management)
+- [10. EC2 Troubleshooting](#9-ec2-troubleshooting)
+- [11. EBS Volume Management](#10-ebs-volume-management)
+- [12. EBS Troubleshooting Scenarios](#11-ebs-troubleshooting-scenarios)
+- [13. S3 Bucket Operations](#12-s3-bucket-operations)
+- [14. S3 Advanced Features](#13-s3-advanced-features)
+- [15. Cleanup](#14-cleanup)
 
 ---
 
-## 8. EC2 Instance Management
+## 9. EC2 Instance Management
 
 ### Launch and Configure an EC2 Instance
 
@@ -80,7 +80,7 @@
 
 ---
 
-## 9. EC2 Troubleshooting
+## 10. EC2 Troubleshooting
 
 ### Troubleshooting Exercise 1
 
@@ -120,7 +120,7 @@ After completing checks, try accessing `http://your-public-ip` again.
 
 ---
 
-## 10. EBS Volume Management
+## 11. EBS Volume Management
 
 ### Attach EBS Volume to EC2
 
@@ -160,7 +160,7 @@ After completing checks, try accessing `http://your-public-ip` again.
 
 ---
 
-## 11. EBS Troubleshooting Scenarios
+## 12. EBS Troubleshooting Scenarios
 
 ### Scenario 1: Slow Disk Performance
 
@@ -254,7 +254,7 @@ After completing checks, try accessing `http://your-public-ip` again.
 
 ---
 
-## 12. S3 Bucket Operations
+## 13. S3 Bucket Operations
 
 ### Create S3 Bucket and Upload Files
 
@@ -308,7 +308,7 @@ After completing checks, try accessing `http://your-public-ip` again.
 
 ---
 
-## 13. S3 Advanced Features
+## 14. S3 Advanced Features
 
 ### S3 Pre-signed URLs
 
@@ -391,7 +391,7 @@ aws s3 presign s3://your-bucket-name/your-file-name
 
 ---
 
-## 14. Cleanup
+## 15. Cleanup
 
 ### Checkpoint
 
