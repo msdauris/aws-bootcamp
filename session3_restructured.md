@@ -2,16 +2,16 @@
 
 ## 📋 Table of Contents
 
-- [25. Application Load Balancer Deployment](#25-application-load-balancer-deployment)
-- [26. ALB Configuration Walkthrough](#26-alb-configuration-walkthrough)
-- [27. Connection Draining Setup](#27-connection-draining-setup)
-- [28. Auto Scaling Configuration](#28-auto-scaling-configuration)
-- [29. Auto Scaling Group Deployment](#29-auto-scaling-group-deployment)
-- [30. Session Checkpoint & Cleanup](#30-session-checkpoint--cleanup)
+- [16. Application Load Balancer Deployment](#16-application-load-balancer-deployment)
+- [17. ALB Configuration Walkthrough](#17-alb-configuration-walkthrough)
+- [18. Connection Draining Setup](#18-connection-draining-setup)
+- [19. Auto Scaling Configuration](#19-auto-scaling-configuration)
+- [20. Auto Scaling Group Deployment](#20-auto-scaling-group-deployment)
+- [21. Session Checkpoint & Cleanup](#21-session-checkpoint--cleanup)
 
 ---
 
-## 25. Application Load Balancer Deployment
+## 16. Application Load Balancer Deployment
 
 ### Deploy ALB for Multi-Instance Routing
 
@@ -37,7 +37,7 @@ Traffic routing based on application requirements with proper port mapping and s
 
 ---
 
-## 26. ALB Configuration Walkthrough
+## 17. ALB Configuration Walkthrough
 
 ### Step-by-Step ALB Setup
 
@@ -114,7 +114,7 @@ Traffic routing based on application requirements with proper port mapping and s
 
 ---
 
-## 27. Connection Draining Setup
+## 18. Connection Draining Setup
 
 ### Configure Graceful Instance Removal
 
@@ -162,7 +162,7 @@ Connection draining (deregistration delay) ensures:
 
 ---
 
-## 28. Auto Scaling Configuration
+## 19. Auto Scaling Configuration
 
 ### Understanding Auto Scaling Components
 
@@ -225,7 +225,7 @@ echo "<h1>Auto Scaled Web Server - $(hostname -f)</h1>" > /var/www/html/index.ht
 
 ---
 
-## 29. Auto Scaling Group Deployment
+## 20. Auto Scaling Group Deployment
 
 ### Create and Configure Auto Scaling Group
 
@@ -311,7 +311,7 @@ echo "<h1>Auto Scaled Web Server - $(hostname -f)</h1>" > /var/www/html/index.ht
 
 ---
 
-## 30. Session Checkpoint & Cleanup
+## 21. Session Checkpoint & Cleanup
 
 ### Resource Management and Cost Control
 
