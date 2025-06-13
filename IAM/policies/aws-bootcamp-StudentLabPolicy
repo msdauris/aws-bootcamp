@@ -1,0 +1,235 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateUser",
+                "iam:DeleteUser",
+                "iam:GetUser",
+                "iam:UpdateUser",
+                "iam:CreateLoginProfile",
+                "iam:DeleteLoginProfile",
+                "iam:UpdateLoginProfile",
+                "iam:AttachUserPolicy",
+                "iam:DetachUserPolicy",
+                "iam:CreateAccessKey",
+                "iam:DeleteAccessKey",
+                "iam:ListAccessKeys",
+                "iam:UpdateAccessKey",
+                "iam:ListGroupsForUser",
+                "iam:ListAttachedUserPolicies",
+                "iam:CreateInstanceProfile",
+                "iam:AttachRolePolicy",
+                "iam:ListInstanceProfilesForRole"
+            ],
+            "Resource": "arn:aws:iam::730492949633:user/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:ListUsers",
+                "iam:ListGroups",
+                "iam:GetGroup",
+                "iam:GetGroupPolicy",
+                "iam:ListPolicies",
+                "iam:ListAttachedGroupPolicies",
+                "iam:ListGroupPolicies",
+                "iam:GetPolicy",
+                "iam:GetPolicyVersion",
+                "iam:GetAccountPasswordPolicy"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:AddUserToGroup",
+                "iam:RemoveUserFromGroup"
+            ],
+            "Resource": "arn:aws:iam::730492949633:group/StudentLab*",
+            "Condition": {
+                "StringNotEquals": {
+                    "iam:PolicyArn": "arn:aws:iam::aws:policy/AdministratorAccess"
+                }
+            }
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "iam:AddUserToGroup",
+                "iam:RemoveUserFromGroup"
+            ],
+            "Resource": "arn:aws:iam::730492949633:group/Administrators"
+        },
+        {
+            "Effect": "Deny",
+            "Action": [
+                "iam:AddUserToGroup",
+                "iam:RemoveUserFromGroup",
+                "iam:AttachGroupPolicy",
+                "iam:DetachGroupPolicy",
+                "iam:DeleteGroup",
+                "iam:UpdateGroup"
+            ],
+            "Resource": [
+                "arn:aws:iam::730492949633:group/Demo*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:CreateRole",
+                "iam:DeleteRole",
+                "iam:GetRole",
+                "iam:UpdateAssumeRolePolicy",
+                "iam:ListRoles",
+                "iam:CreatePolicy",
+                "iam:DeletePolicy",
+                "iam:ListPolicyVersions",
+                "iam:Simulate*",
+                "iam:ListInstanceProfilesForRole",
+                "iam:CreateInstanceProfile",
+                "iam:AddRoleToInstanceProfile",
+                "iam:RemoveRoleFromInstanceProfile",
+                "iam:DeleteInstanceProfile"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachRolePolicy"
+            ],
+            "Resource": "arn:aws:iam::730492949633:role/demo*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "access-analyzer:ValidatePolicy",
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "elasticloadbalancing:*",
+                "autoscaling:*",
+                "cloudwatch:PutMetricAlarm",
+                "cloudwatch:DescribeAlarms"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rds:CreateDBInstance",
+                "rds:DescribeDBInstances",
+                "rds:DeleteDBInstance"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "athena:*",
+                "glue:*"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "sqs:CreateQueue",
+                "sqs:GetQueueAttributes",
+                "sqs:GetQueueUrl",
+                "sqs:DeleteQueue",
+                "sqs:SendMessage",
+                "sqs:ReceiveMessage",
+                "sqs:DeleteMessage",
+                "sqs:ListQueues"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachUserPolicy",
+                "iam:AttachRolePolicy",
+                "iam:PassRole"
+            ],
+            "Resource": [
+                "arn:aws:iam::aws:policy/AmazonQDeveloperAccess",
+                "arn:aws:iam::730492949633:role/*",
+                "arn:aws:iam::730492949633:user/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:AttachUserPolicy"
+            ],
+            "Resource": "arn:aws:iam::730492949633:user/*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PolicyArn": "arn:aws:iam::aws:policy/AmazonQDeveloperAccess"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "rds:Describe*",
+                "rds:List*",
+                "rds:CreateDBSubnetGroup",
+                "rds:DescribeDBSubnetGroups",
+                "rds:DeleteDBSubnetGroup",
+                "rds:CreateDBCluster",
+                "rds:DeleteDBCluster",
+                "rds:ModifyDBCluster",
+                "rds:StartDBCluster",
+                "rds:StopDBCluster",
+                "rds:CreateDBClusterSnapshot"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:Describe*",
+                "kms:ListKeys",
+                "kms:DescribeKey",
+                "cloudwatch:GetMetricData",
+                "cloudwatch:ListMetrics",
+                "kms:ListAliases",
+                "kms:DescribeKey"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:AWSServiceName": "rds.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "secretsmanager:CreateSecret",
+                "secretsmanager:PutSecretValue",
+                "secretsmanager:TagResource",
+                "secretsmanager:GetSecretValue",
+                "secretsmanager:ListSecrets",
+                "secretsmanager:DescribeSecret"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
