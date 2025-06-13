@@ -146,55 +146,68 @@ Internet (Port 80/443)
 
 #### Web Tier Security Groups
 
-**workshop-web-sg** (sg-web001)
-- **Inbound:**
-  - HTTP (80) from 0.0.0.0/0
-  - HTTPS (443) from 0.0.0.0/0
-  - SSH (22) from 0.0.0.0/0 (if no bastion)
-- **Outbound:** 
-  - HTTP (4502) to workshop-app-sg (AEM Author)
-  - HTTP (4503) to workshop-app-sg (AEM Publisher)
-  - All other traffic (0.0.0.0/0)
-- **Purpose:** Public-facing web servers
+🟢 1. ALB Security Group (sg-alb001)
+```
+Inbound:
+- HTTP (80) from 0.0.0.0/0
+- HTTPS (443) from 0.0.0.0/0
 
-**workshop-alb-sg** (sg-alb001)
-- **Inbound:**
-  - HTTP (80) from 0.0.0.0/0
-  - HTTPS (443) from 0.0.0.0/0
-  - SSH (22) from workshop-web-sg (if no bastion)
-- **Outbound:**
-  - HTTP (80) to workshop-web-sg
-  - HTTPS (443) to workshop-web-sg
-- **Purpose:** Application Load Balancer
+Outbound:
+- HTTP (80) to sg-web001
+- HTTPS (443) to sg-web001
+```
+🔸 Purpose: Allow external HTTP/HTTPS traffic in; send traffic to Web tier
 
-#### Application Tier Security Groups
 
-**workshop-app-sg** (sg-app001)
-- **Inbound:**
-  - HTTP (8080) from workshop-web-sg
-  - SSH (22) from workshop-bastion-sg
-  - Custom TCP (3000-3010) from workshop-web-sg
-- **Outbound:** All traffic (0.0.0.0/0)
-- **Purpose:** Application servers in private subnets
+🟢 2. Web Tier SG (aws-bootcamp-sg-web001)
+```
+Inbound:
+- HTTP (80) from sg-alb001
+- HTTPS (443) from sg-alb001
+- SSH (22) from sg-bastion001  # ❗️Recommended
 
-#### Data Tier Security Groups
+Outbound:
+- TCP 4502 to sg-app001 (AEM Author)
+- TCP 4503 to sg-app001 (AEM Publisher)
+- All (0.0.0.0/0)  # Optional, or restrict to just what’s needed
+```
+🔸 Purpose: Receive web traffic from ALB, send to app tier; allow SSH from Bastion only
 
-**workshop-database-sg** (sg-db001)
-- **Inbound:**
-  - MySQL (3306) from workshop-app-sg
-  - PostgreSQL (5432) from workshop-app-sg
-  - SSH (22) from workshop-bastion-sg
-- **Outbound:** All traffic (0.0.0.0/0)
-- **Purpose:** Database servers
 
-#### Management Security Groups
+🟢 3. Application Tier SG (aws-bootcamp-sg-app001)
+```
+Inbound:
+- TCP 4502, 4503 from sg-web001
+- Custom TCP (3000–3010) from sg-web001  # If needed for custom services
+- SSH (22) from sg-bastion001
 
-**workshop-bastion-sg** (sg-bastion001)
-- **Inbound:**
-  - SSH (22) from 0.0.0.0/0
-  - ICMP from 10.0.0.0/16
-- **Outbound:** All traffic (0.0.0.0/0)
-- **Purpose:** Secure access to private instances
+Outbound:
+- All traffic (0.0.0.0/0)
+```
+🔸 Purpose: Accept requests from Web tier, allow admin via Bastion
+
+🟢 4. Database Tier SG (aws-bootcamp-sg-db001)
+```
+Inbound:
+- MySQL (3306) from sg-app001
+- PostgreSQL (5432) from sg-app001
+- SSH (22) from sg-bastion001
+
+Outbound:
+- All traffic (0.0.0.0/0)
+```
+🔸 Purpose: Accept DB traffic from App tier, allow admin via Bastion
+
+🟢 5. Bastion SG (aws-bootcamp-sg-bastion001)
+```
+Inbound:
+- SSH (22) from YOUR_IP/32  # ✅ RECOMMENDED!
+- ICMP from 10.0.0.0/16 (for pinging)
+
+Outbound:
+- All traffic (0.0.0.0/0)
+```
+🔸 Purpose: Secure admin access — ideally restricted to trusted IPs only
 
 ---
 
@@ -204,12 +217,12 @@ Internet (Port 80/443)
 
 | **Instance** | **Type** | **Subnet** | **Security Group** | **Public IP** | **Purpose** |
 |--------------|----------|------------|-------------------|---------------|-------------|
-| **Bastion Host (OPT)** |   t3.micro  | Public A (10.0.1.0/24)  | workshop-bastion-sg   |     Yes    |   SSH gateway  |
-| **Web Server 1** |   t3.micro  | Public A (10.0.1.0/24)  | workshop-web-sg    |     Yes    |   Apache/Nginx  |
-| **Web Server 2** |  t3.micro  | Public B (10.0.2.0/24)   |workshop-web-sg     |    Yes     |   Load balancer target|
-| **App Server 1** | t3.micro  | Private A (10.0.11.0/24) |workshop-app-sg      |   No       |   AEM Author (4502)|
-| **App Server 2** | t3.micro  | Private B (10.0.12.0/24) |workshop-app-sg      |   No       |   AEM Publisher (4503)|
-| **Database** |      t3.micro | Private A (10.0.11.0/24) |workshop-database-sg |   No       |   Data storage|
+| **Bastion Host (OPT)** |   t3.micro  | Public A (10.0.1.0/24)  | aws-bootcamp-sg-bastion001  |     Yes    |   SSH gateway  |
+| **Web Server 1** |   t3.micro  | Public A (10.0.1.0/24)  | aws-bootcamp-sg-web001 |     Yes    |   Apache/Nginx  |
+| **Web Server 2** |  t3.micro  | Public B (10.0.2.0/24)   |aws-bootcamp-sg-web001 |    Yes     |   Load balancer target|
+| **App Server 1** | t3.micro  | Private A (10.0.11.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Author (4502)|
+| **App Server 2** | t3.micro  | Private B (10.0.12.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Publisher (4503)|
+| **Database** |      t3.micro | Private A (10.0.11.0/24) |aws-bootcamp-sg-db001 |   No       |   Data storage|
 
 ### User Data Scripts by Instance Type
 
