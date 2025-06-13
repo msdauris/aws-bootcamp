@@ -263,7 +263,8 @@ INSERT INTO employees (name, role, salary, hire_date) VALUES
 ('John Doe', 'Software Engineer', 80000.00, '2023-01-15'),
 ('Jane Smith', 'Data Analyst', 70000.00, '2023-02-01'),
 ('Bob Brown', 'Senior Engineer', 95000.00, '2022-11-10'),
-('Lisa Ray', 'Product Manager', 85000.00, '2023-03-01');
+('Lisa Ray', 'Product Manager', 85000.00, '2023-03-01'),
+('Tina Chen', 'Marketing', 85000.00, '2023-03-01');
 ```
 
 #### Query Data
