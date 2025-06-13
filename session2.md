@@ -32,13 +32,21 @@
      - Store securely (cannot be re-downloaded)
 
 3. **Network Settings**
-   - Create new Security Group
-   - Allow SSH & HTTP traffic from anywhere (0.0.0.0/0)
+   - Select exisiting security group - aws-bootcamp-sg-web001??? (CLARIFY)
+   - Allow SSH & HTTP traffic from anywhere (0.0.0.0/0) (CLARIFY)
 
 4. **Storage**
    - Configure with default size
 
 5. **Advanced Details - User Data**
+
+### 🧠 EC2 User Data – Exam Tip
+
+- Runs **once** on **first boot**
+- Executes **as root** (no `sudo` needed)
+- Used to auto-install packages, run scripts, etc.
+
+> ✅ **Tip:** Think **first boot, root access** — automates setup without manual login.
 
    ```bash
    #!/bin/bash
@@ -57,12 +65,13 @@
 
 - Copy the public IP address
 - Open in web browser to verify Apache is serving the "Hello World" page
+- If it doesn’t load, try **`http://` instead of `https://`**
 
 ---
 
 ### SSH into EC2 Instance
 
-**Objective:** Connect to EC2 instance using SSH
+**Objective:** Connect to EC2 instance using SSH (CLARIFY - use bastion host?)
 
 #### Steps
 
@@ -390,6 +399,37 @@ aws s3 presign s3://your-bucket-name/your-file-name
 5. **Test:** Upload file to trigger event
 
 ---
+
+---
+
+### S3 Storage Classes
+
+**Objective:** Optimize cost based on access patterns
+
+While your slide deck includes a detailed table, here’s a quick summary:
+
+- **Standard:** For frequently accessed data  
+- **Intelligent-Tiering:** Automatically moves data to lower-cost tiers  
+- **Standard-IA / One Zone-IA:** For infrequent access, lower cost  
+- **Glacier / Glacier Deep Archive:** Long-term archival  
+- **Reduced Redundancy (Legacy):** Not recommended — largely deprecated
+
+> 💡 Use lifecycle policies to transition objects between storage classes over time.
+
+---
+
+### AWS Snowball
+
+**Objective:** Physically transfer large volumes of data to AWS
+
+- Used when data transfer over the internet is too slow or impractical
+- Comes in two options:
+  - **Snowball Edge Storage Optimized** – for large-scale data transfer
+  - **Snowball Edge Compute Optimized** – includes local processing power
+- Tamper-resistant, shipping-tracked, and encrypted end-to-end
+
+> ✅ **Exam Tip:** Think **“petabyte-scale data transfer”** and **“offline migration to AWS”**
+
 
 ## 15. Cleanup
 

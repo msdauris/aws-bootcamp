@@ -91,9 +91,9 @@ Internet Gateway
 │  │   10.0.1.0/24       │    │   10.0.2.0/24       │        │
 │  │   (eu-west-1a)      │    │   (eu-west-1b)      │        │
 │  │                     │    │                     │        │
-│  │ • Bastion Host      │    │ • Web Server 2      │        │
-│  │ • Web Server 1      │    │ • ALB Target        │        │
-│  │ • NAT Gateway       │    │                     │        │
+│  │ • EC2 Instance      │    │ • (OPT) Web Server 2│        │
+│  │ • ALB Target        │    │ • (OPT)ALB Target   │        │
+│  │                     │    │                     │        │
 │  └─────────┬───────────┘    └─────────────────────┘        │
 │            │                                               │
 │  ┌─────────▼───────────┐    ┌─────────────────────┐        │
@@ -101,8 +101,8 @@ Internet Gateway
 │  │   10.0.11.0/24      │    │   10.0.12.0/24      │        │
 │  │   (eu-west-1a)      │    │   (eu-west-1b)      │        │
 │  │                     │    │                     │        │
-│  │ • App Server 1      │    │ • App Server 2      │        │
-│  │ • Database Server   │    │                     │        │
+│  │ • Database Server   │    │ • (OPT)App Server 2 │        │
+│  │                     │    │                     │        │
 │  └─────────────────── ─┘    └─────────────────────┘        │
 └────────────────────────────────────────────────────────────┘
 ```
@@ -134,13 +134,13 @@ Internet Gateway
 | **Route Table** | **Subnet Association** | **Routes** |
 |-----------------|------------------------|------------|
 | **Public RT** | Public Subnets A & B | 0.0.0.0/0 → Internet Gateway |
-| **Private RT** | Private Subnets A & B | 0.0.0.0/0 → NAT Gateway |
+| **Private RT** | Private Subnets A & B | No 0.0.0.0/0 route (local VPC only) |
 
 ---
 
 ## 3. Security Group Configuration
 
-### Tiered Security Architecture
+### AEM Example Tiered Security Architecture
 
 ```
 Internet (Port 80/443)
@@ -174,68 +174,28 @@ Internet (Port 80/443)
 
 #### Web Tier Security Groups
 
-🟢 1. ALB Security Group (sg-alb001)
+🟢 1. Web Tier SG (aws-bootcamp-sg-web001)
 ```
 Inbound:
 - HTTP (80) from 0.0.0.0/0
 - HTTPS (443) from 0.0.0.0/0
+- SSH (22) from YOUR_IP/32  # Optional if direct access needed
 
 Outbound:
-- HTTP (80) to sg-web001
-- HTTPS (443) to sg-web001
+- MySQL (3306) to sg-db001
+- All traffic (0.0.0.0/0)  # Or restrict more tightly
 ```
-🔸 Purpose: Allow external HTTP/HTTPS traffic in; send traffic to Web tier
+🔸 Purpose: Public EC2 instance for testing Apache and RDS access
 
-
-🟢 2. Web Tier SG (aws-bootcamp-sg-web001)
+🟢 2. Database Tier SG (aws-bootcamp-sg-db001)
 ```
 Inbound:
-- HTTP (80) from sg-alb001
-- HTTPS (443) from sg-alb001
-- SSH (22) from sg-bastion001  # ❗️Recommended
+- MySQL (3306) from sg-web001
 
 Outbound:
-- TCP 4502 to sg-app001 (AEM Author)
-- TCP 4503 to sg-app001 (AEM Publisher)
-- All (0.0.0.0/0)  # Optional, or restrict to just what’s needed
+- All traffic (0.0.0.0/0)  # Optional, typically not used
 ```
-🔸 Purpose: Receive web traffic from ALB, send to app tier; allow SSH from Bastion only
-
-
-🟢 3. Application Tier SG (aws-bootcamp-sg-app001)
-```
-Inbound:
-- TCP 4502, 4503 from sg-web001
-- Custom TCP (3000–3010) from sg-web001  # If needed for custom services
-- SSH (22) from sg-bastion001
-
-Outbound:
-- All traffic (0.0.0.0/0)
-```
-🔸 Purpose: Accept requests from Web tier, allow admin via Bastion
-
-🟢 4. Database Tier SG (aws-bootcamp-sg-db001)
-```
-Inbound:
-- MySQL (3306) from sg-app001
-- PostgreSQL (5432) from sg-app001
-- SSH (22) from sg-bastion001
-
-Outbound:
-- All traffic (0.0.0.0/0)
-```
-🔸 Purpose: Accept DB traffic from App tier, allow admin via Bastion
-
-🟢 5. Bastion SG (aws-bootcamp-sg-bastion001)
-```
-Inbound:
-- SSH (22) from YOUR_IP/32  # ✅ RECOMMENDED!
-- ICMP from 10.0.0.0/16 (for pinging)
-
-Outbound:
-- All traffic (0.0.0.0/0)
-```
-🔸 Purpose: Secure admin access — ideally restricted to trusted IPs only
+🔸 Purpose: Private DB access from web instance only
 
 ---
 
@@ -245,11 +205,11 @@ Outbound:
 
 | **Instance** | **Type** | **Subnet** | **Security Group** | **Public IP** | **Purpose** |
 |--------------|----------|------------|-------------------|---------------|-------------|
-| **Bastion Host (OPT)** |   t3.micro  | Public A (10.0.1.0/24)  | aws-bootcamp-sg-bastion001  |     Yes    |   SSH gateway  |
+| **Bastion Host (🟡 Optional)** |   t3.micro  | Public A (10.0.1.0/24)  | aws-bootcamp-sg-bastion001  |     Yes    |   SSH gateway  |
 | **Web Server 1** |   t3.micro  | Public A (10.0.1.0/24)  | aws-bootcamp-sg-web001 |     Yes    |   Apache/Nginx  |
-| **Web Server 2** |  t3.micro  | Public B (10.0.2.0/24)   |aws-bootcamp-sg-web001 |    Yes     |   Load balancer target|
-| **App Server 1** | t3.micro  | Private A (10.0.11.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Author (4502)|
-| **App Server 2** | t3.micro  | Private B (10.0.12.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Publisher (4503)|
+| **Web Server 2 (🟡 Optional)** |  t3.micro  | Public B (10.0.2.0/24)   |aws-bootcamp-sg-web001 |    Yes     |   Load balancer target|
+| **App Server 1 (🟡 Optional)** | t3.micro  | Private A (10.0.11.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Author (4502)|
+| **App Server 2 (🟡 Optional)** | t3.micro  | Private B (10.0.12.0/24) |aws-bootcamp-sg-app001 |   No       |   AEM Publisher (4503)|
 | **Database** |      t3.micro | Private A (10.0.11.0/24) |aws-bootcamp-sg-db001 |   No       |   Data storage|
 
 ### User Data Scripts by Instance Type
