@@ -37,7 +37,7 @@ RDS provides managed database services that enable:
 ### Step 2: Choose Database Engine
 
 1. **Select Engine Type**
-   - Choose **MySQL** or **PostgreSQL** (recommended for this exercise)
+   - Choose **MySQL** (or **PostgreSQL**) (recommended for this exercise)
    - Skip "Easy create" option for full configuration control
 
 2. **Edition Selection**
@@ -59,7 +59,7 @@ RDS provides managed database services that enable:
 ### Step 4: Instance Configuration
 
 1. **Instance Class**
-   - **Testing:** `db.t3.micro` (free tier eligible)
+   - **Testing:** `db.t3.micro` (if free tier eligible)
    - **Production:** `db.m5.large` or higher based on requirements
 
 2. **Storage Configuration**
@@ -75,15 +75,15 @@ RDS provides managed database services that enable:
 ### Step 5: Configure Networking
 
 1. **Network Settings**
-   - **VPC:** Choose appropriate VPC or use default
-   - **Subnet group:** Use default or create custom
+   - **VPC:** Choose aws-bootcamp-vpc
+   - **Subnet group:** Use aws-bootcamp-db-subnet-group
    - **Public access:** Enable for workshop (disable for production)
 
 2. **Security Configuration**
-   - **VPC security group:** Create new or choose existing
+   - **VPC security group:** Choose aws-bootcamp-sg-db001
    - **Database port:** 
      - MySQL: 3306
-     - PostgreSQL: 5432
+     - (PostgreSQL: 5432)
 
 ### Step 6: Enable Backups and Monitoring
 
