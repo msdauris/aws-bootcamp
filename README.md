@@ -1,46 +1,74 @@
-# aws-bootcamp
+## 📋 Table of Contents
 
-🪖 AWS Bootcamp: Your Mission Begins Now
+1. [Information for Students](#aws-bootcamp)  
+2. [Infrastructure & Architecture](#1-infrastructure--architecture)  
+3. [VPC and Networking Configuration](#2-vpc-and-networking-configuration)  
+4. [Security Group Configuration](#3-security-group-configuration)  
+5. [EC2 Instance Deployment Strategy](#4-ec2-instance-deployment-strategy)  
+6. [S3 Bucket Configuration](#5-s3-bucket-configuration)  
+7. [Workshop Execution Guide](#6-workshop-execution-guide)  
+8. [Load Balancer Configuration](#7-load-balancer-configuration)  
+9. [Monitoring and Troubleshooting](#8-monitoring-and-troubleshooting)  
+10. [Workshop Cleanup Procedures](#9-workshop-cleanup-procedures)  
+11. [Advanced Workshop Extensions](#10-advanced-workshop-extensions)  
+12. [Summary](#11-summary)
 
-- The cloud collapsed. Only the skilled survived.
-- This 4-day AWS Bootcamp is your crash course in survival — built for those aiming to pass the Cloud Practitioner or prepare for the Solutions Architect exam.
+---
+
+# 🪖 AWS Bootcamp
+
+**Your Mission Begins Now**
+
+- The cloud collapsed. Only the skilled survived.  
+- This 4-day AWS Bootcamp is your crash course in survival — built for those aiming to pass the Cloud Practitioner or prepare for the Solutions Architect exam.  
 - No fluff. No theory marathons. Just critical AWS skills, fast.
 
 ### ✅ What You'll Master
-- Launch and connect to EC2
-- Store and secure data with S3
-- Load balance, scale, and recover
-- Query data via RDS and Athena
 
-- Alone or with your squad, complete the hands-on drills. Earn your place. Build momentum. Stay sharp.
-- At the end? You’ll walk away with real AWS skills — and the fire to go further.
-- The world runs in the cloud now. Do your duty.
+- 🚀 Launch and connect to EC2  
+- 💾 Store and secure data with S3  
+- ⚖️ Load balance, scale, and recover  
+- 📊 Query data via RDS and Athena  
 
-# AWS Account
-https://730492949633.signin.aws.amazon.com/console
+Alone or with your squad, complete the hands-on drills. Earn your place. Build momentum. Stay sharp.  
+At the end? You’ll walk away with real AWS skills — and the fire to go further.  
+**The world runs in the cloud now. Do your duty.**
 
-# AWS Region - LOCKED eu-west-1 Ireland
+---
 
-### Tagging Convention
-All resources must include:
-- `Workshop=AWS-AOSE`
+## 🔐 AWS Account & Region
+
+- **Login:** [AWS Console](https://730492949633.signin.aws.amazon.com/console)  
+- **Region:** `eu-west-1 (Ireland)` — **LOCKED**
+
+---
+
+### 🏷️ Tagging Convention
+
+All deployed resources must include the following tags:
+
+- `aws-bootcamp`  
 - `Owner=[your-name-or-team]`
 
-By the end of Operation Cloudstrike, each recruit will have:-
-- 🎨 Customized their AWS Console (theme + bookmarks)
-- 🛡️ Created IAM user, role, and custom policy
-- 🔍 Used IAM Policy Simulator to test access
-- 💻 Launched an EC2 instance and connected via SSH
-- 🔧 Installed a web server (Apache or Nginx)
-- 💾 Attached and mounted an EBS volume
-- 📦 Created and managed an S3 bucket
-- 🔐 Applied S3 permissions and tested object access
-- ⚖️ Set up an Application Load Balancer + listener rules
-- 📈 Configured Auto Scaling Group and tested scale events
-- 🗄️ Deployed an RDS instance and connected via CLI
-- 📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)
-- 🕵️ Queried structured data from S3 using Athena
+---
 
+### 🎯 Operation Cloudstrike Checklist
+
+By the end of the mission, each recruit will have:
+
+- 🎨 Customized the AWS Console (theme + bookmarks)  
+- 🛡️ Created IAM user, role, and custom policy  
+- 🔍 Tested access using IAM Policy Simulator  
+- 💻 Launched an EC2 instance and connected via SSH  
+- 🔧 Installed a web server (Apache or Nginx)  
+- 💾 Attached and mounted an EBS volume  
+- 📦 Created and managed an S3 bucket  
+- 🔐 Applied S3 permissions and tested object access  
+- ⚖️ Set up an Application Load Balancer + listener rules  
+- 📈 Configured an Auto Scaling Group and tested scale events  
+- 🗄️ Deployed an RDS instance and connected via CLI  
+- 📊 Ran SQL queries (CREATE, INSERT, SELECT, UPDATE, DELETE)  
+- 🕵️ Queried structured data from S3 using Athena
 
 # AWS Workshop Complete Network Setup Guide - for facilitators.
 
