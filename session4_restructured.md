@@ -2,14 +2,14 @@
 
 ## 📋 Table of Contents
 
-- [31. RDS (Relational Database Service)](#31-rds-relational-database-service)
-- [32. Connect to RDS from EC2](#32-connect-to-rds-from-ec2)
-- [33. Athena + S3 Querying](#33-athena--s3-querying)
-- [34. Session Checkpoint & Cleanup](#34-session-checkpoint--cleanup)
+- [22. RDS (Relational Database Service)](#22-rds-relational-database-service)
+- [23. Connect to RDS from EC2](#23-connect-to-rds-from-ec2)
+- [24. Athena + S3 Querying](#24-athena--s3-querying)
+- [25. Session Checkpoint & Cleanup](#25-session-checkpoint--cleanup)
 
 ---
 
-## 31. RDS (Relational Database Service)
+## 22. RDS (Relational Database Service)
 
 ### Set Up Production-Ready RDS Instance
 
@@ -150,7 +150,7 @@ RDS provides managed database services that enable:
 
 ---
 
-## 32. Connect to RDS from EC2
+## 23. Connect to RDS from EC2
 
 ### Secure Database Access and SQL Operations
 
@@ -361,7 +361,7 @@ DELETE FROM employees WHERE name = 'Jane Smith';
 
 ---
 
-## 33. Athena + S3 Querying
+## 24. Athena + S3 Querying
 
 ### Serverless Analytics with Athena and Glue
 
@@ -630,7 +630,7 @@ SELECT name, salary FROM employees WHERE department = 'Engineering';
 
 ---
 
-## 34. Session Checkpoint & Cleanup
+## 25. Session Checkpoint & Cleanup
 
 ### Resource Cleanup and Cost Management
 
