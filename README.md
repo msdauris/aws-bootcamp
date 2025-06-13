@@ -11,7 +11,7 @@
 9. [Monitoring and Troubleshooting](#8-monitoring-and-troubleshooting)  
 10. [Workshop Cleanup Procedures](#9-workshop-cleanup-procedures)  
 11. [Advanced Workshop Extensions](#10-advanced-workshop-extensions)  
-12. [Summary](#11-summary)
+12. [Summary](#summary)
 
 ---
 
