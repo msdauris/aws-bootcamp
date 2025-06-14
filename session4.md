@@ -408,6 +408,7 @@ DELETE FROM employees WHERE name = 'Jane Smith';
 1. **Create Sample CSV File**
    - Open text editor or spreadsheet application
    - Create file named `employees.csv` with following content:
+   - or download from here >> https://github.com/msdauris/aws-bootcamp/blob/main/athena/data/employees.csv
 
 ```csv
 id,name,department,salary,hire_date,location
