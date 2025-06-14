@@ -9,10 +9,11 @@
 
 ---
 
-## 22. RDS (Relational Database Service)
+## 22. RDS (Relational Database Service) -  (For Facilitators Only — Educational Text) 
+Students skip to [23. Connect to RDS from EC2](#23-connect-to-rds-from-ec2)
 
 ### Set Up Production-Ready RDS Instance
-## For Facilitators Only — Educational Text
+
 
 **Objective:** Create a production-aware RDS instance with high availability and backups for enterprise use
 
