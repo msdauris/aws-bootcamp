@@ -431,7 +431,7 @@ id,name,department,salary,hire_date,location
 1. **Create S3 Bucket**
    - Navigate to S3 Console
    - Click **Create bucket**
-   - Bucket name: `athena-workshop-data-[your-name]` (must be globally unique)
+   - Bucket name: `athena-aws-bootcamp-data-[your-name]` (must be globally unique)
    - Choose appropriate region
 
 2. **Create Folder Structure**
