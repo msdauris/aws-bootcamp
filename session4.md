@@ -12,7 +12,7 @@
 ## 22. RDS (Relational Database Service)
 
 ### Set Up Production-Ready RDS Instance
-For Facilitators Only — Educational Text
+##For Facilitators Only — Educational Text
 
 **Objective:** Create a production-aware RDS instance with high availability and backups for enterprise use
 
