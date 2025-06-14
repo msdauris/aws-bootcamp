@@ -1,30 +1,69 @@
 Run Basic SQL Commands
-✅ Create a Table
+✅ show DB
+SHOW DATABASES;
+
+✅ Create a DB and Table
+CREATE DATABASE bootcamp;
+USE bootcamp;
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    role VARCHAR(100),
+    salary DECIMAL(10,2),
+    hire_date DATE
+);
+
+✅ Create a table
 MySQL:
 
 CREATE TABLE employees (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100),
-    role VARCHAR(100)
+    role VARCHAR(100),
+    salary DECIMAL(10,2),
+    hire_date DATE
 );
-PostgreSQL: use SERIAL instead of AUTO_INCREMENT.
 
+PostgreSQL:
 
 CREATE TABLE employees (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    role VARCHAR(100)
+    role VARCHAR(100),
+    salary DECIMAL(10,2),
+    hire_date DATE
 );
+
 ✅ Insert Data
+INSERT INTO employees (name, role, salary, hire_date) VALUES 
+('John Doe', 'Software Engineer', 80000.00, '2023-01-15'),
+('Jane Smith', 'Data Analyst', 70000.00, '2023-02-01'),
+('Bob Brown', 'Senior Engineer', 95000.00, '2022-11-10'),
+('Lisa Ray', 'Product Manager', 85000.00, '2023-03-01'),
+('Tina Chen', 'Marketing', 85000.00, '2023-03-01');
 
-INSERT INTO employees (name, role) VALUES ('John Doe', 'Software Engineer');
-INSERT INTO employees (name, role) VALUES ('Jane Smith', 'Data Analyst');
 ✅ Query Data
-
+-- Select all employees
 SELECT * FROM employees;
+
+-- Filter by role
+SELECT name, salary FROM employees WHERE role LIKE '%Engineer%';
+
+-- Order by salary
+SELECT name, role, salary FROM employees ORDER BY salary DESC;
+
+-- Average salary by role
+SELECT role, AVG(salary) as avg_salary, COUNT(*) as count
+FROM employees 
+GROUP BY role;
+
 ✅ Update a Record
+-- Give John a promotion
+UPDATE employees 
+SET role = 'Senior Software Engineer', salary = 90000.00 
+WHERE name = 'John Doe';
 
-UPDATE employees SET role='Senior Engineer' WHERE name='John Doe';
 ✅ Delete a Record
-
-DELETE FROM employees WHERE name='Jane Smith';
+-- Remove an employee
+DELETE FROM employees WHERE name = 'Jane Smith';
