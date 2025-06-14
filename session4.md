@@ -12,6 +12,7 @@
 ## 22. RDS (Relational Database Service)
 
 ### Set Up Production-Ready RDS Instance
+For Facilitators Only — Educational Text
 
 **Objective:** Create a production-aware RDS instance with high availability and backups for enterprise use
 
@@ -77,7 +78,7 @@ RDS provides managed database services that enable:
 1. **Network Settings**
    - **VPC:** Choose aws-bootcamp-vpc
    - **Subnet group:** Use aws-bootcamp-db-subnet-group
-   - **Public access:** Enable for workshop (disable for production)
+   - **Public access:** Disable for workshop (disable for production)
 
 2. **Security Configuration**
    - **VPC security group:** Choose aws-bootcamp-sg-db001
@@ -151,6 +152,7 @@ RDS provides managed database services that enable:
 ---
 
 ## 23. Connect to RDS from EC2
+Students follow from here
 
 ### Secure Database Access and SQL Operations
 

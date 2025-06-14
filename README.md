@@ -115,10 +115,14 @@ Internet Gateway
 
 | **Component** | **Configuration** | **Purpose** |
 |---------------|-------------------|-------------|
-| **Workshop VPC** | 10.0.0.0/16 (aws-workshop-vpc) | Main workshop environment |
+| **Workshop VPC** | 10.0.0.0/16 (aws-workshop-vpc) ✅ Enable DNS resolution* ✅ Enable DNS hostnames* | Main workshop environment |
 | **Default VPC** | 172.31.0.0/16 (aws-workshop-default) | Fallback/comparison environment |
 | **Internet Gateway** | Attached to workshop VPC | Public internet access |
 | **NAT Gateway** | Public Subnet A (10.0.1.0/24) | Private subnet internet access |
+
+- *RDS needs DNS to assign a hostname like mydb.xxxx.rds.amazonaws.com
+- *Without DNS hostnames/resolution, private subnets can't resolve that endpoint internally either
+
 
 ### Subnet Architecture
 
