@@ -9,8 +9,8 @@
 
 ---
 
-## 22. RDS (Relational Database Service) -  (For Facilitators Only — Educational Text) 
-Students skip to [23. Connect to RDS from EC2](#23-connect-to-rds-from-ec2)
+## 22. RDS (Relational Database Service) -  (Optional Facilitators Only — Educational Text) 
+If not creating own database Students skip to and continue to use the demo DB [23. Connect to RDS from EC2](#23-connect-to-rds-from-ec2)
 
 ### Set Up Production-Ready RDS Instance
 
@@ -234,6 +234,29 @@ psql -h your-rds-endpoint -U admin -d postgres
    - Enter the master password you created during RDS setup
 
 ### Step 5: Run Basic SQL Commands
+
+#### Show Databases
+
+**MySQL:**
+```sql
+SHOW DATABASES;
+```
+
+#### Create Database
+
+**MySQL:**
+```sql
+CREATE DATABASE bootcamp;
+USE bootcamp;
+
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    role VARCHAR(100),
+    salary DECIMAL(10,2),
+    hire_date DATE
+);
+```
 
 #### Create Table
 
