@@ -1,6 +1,9 @@
-id,name,department,salary  
-1,John Doe,Engineering,80000  
-2,Jane Smith,Marketing,70000  
-3,Bob Brown,Engineering,95000  
-4,Lisa Ray,Finance,85000  
-5,Tina Chen,Marketing,85000  
+id,name,department,salary,hire_date,location
+1,John Doe,Engineering,80000,2023-01-15,Seattle
+2,Jane Smith,Marketing,70000,2023-02-01,New York
+3,Bob Brown,Engineering,82000,2022-11-10,Seattle
+4,Lisa Ray,Finance,90000,2023-03-01,Chicago
+5,Tina Chen,Marketing,72000,2023-01-20,New York
+6,Mark Wilson,Engineering,95000,2022-08-15,Seattle
+7,Sarah Davis,Finance,88000,2023-02-15,Chicago
+8,Tom Johnson,Marketing,75000,2022-12-01,New York
