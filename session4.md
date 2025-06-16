@@ -512,7 +512,7 @@ id,name,department,salary,hire_date,location
 
 4. **Basic Query**
    ```sql
-   SELECT * FROM employees LIMIT 10;
+   SELECT * FROM tb_name_eg_athena_aws_bootcamp_data_emma LIMIT 10;
    ```
 
 5. **Verify Results**
