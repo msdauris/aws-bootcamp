@@ -283,7 +283,7 @@ After completing checks, try accessing `http://your-public-ip` again.
 
 **Steps:**
 1. Click on bucket name
-2. Click "Upload" → "Add files"
+2. Click "Upload" → "Add files" e.g. https://github.com/msdauris/aws-bootcamp/blob/main/s3/aws-bootcamp-example.png
 3. Select files from local machine
 4. Click "Upload"
 
@@ -298,21 +298,38 @@ After completing checks, try accessing `http://your-public-ip` again.
 1. **Method 1:** Select file → Actions → "Make public"
 2. **Method 2:** Bucket Policy
    - Navigate to Permissions → Bucket Policy
-   - Add JSON policy:
+   - Add JSON policy: 
 
 ```json
 {
-  "Version": "2012-10-17",
-  "Statement": [{
-    "Sid": "PublicReadGetObject",
-    "Effect": "Allow",
-    "Principal": "*",
-    "Action": "s3:GetObject",
-    "Resource": "arn:aws:s3:::your-bucket-name/*"
-  }]
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::example-bucket-name/*"
+        }
+    ]
 }
 ```
 
+e.g.
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "Statement1",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::student-2-s3/*"
+        }
+    ]
+}
+```
 **Result:** Files accessible via: `https://your-bucket-name.s3.amazonaws.com/your-file-name`
 
 ---
@@ -346,6 +363,16 @@ aws s3 presign s3://your-bucket-name/your-file-name
 4. **Test:** Upload file, modify it, upload again
 5. Check "Versions" tab to view all versions
 
+**⚠️ Important:**
+| Action                 | What Happens                                              |
+| ---------------------- | --------------------------------------------------------- |
+| Upload same file again | New version is created, old one kept                      |
+| Show versions          | You can view all versions (v1, v2...) and delete markers  |
+| Delete file (normal)   | Adds a **delete marker**, doesn't erase versions          |
+| Don’t show versions    | File looks deleted (hidden by delete marker)              |
+| Permanent delete       | Must manually delete all versions including delete marker |
+
+
 ---
 
 ### Static Website Hosting
@@ -361,7 +388,7 @@ aws s3 presign s3://your-bucket-name/your-file-name
 
 **Result:** Public URL: `http://your-bucket-name.s3-website-region.amazonaws.com`
 
-**⚠️ Important:** Bucket must be public for website hosting to work
+**⚠️ Important:** Bucket must be public for website hosting to work & make sure to copy when prompted!
 
 ---
 
