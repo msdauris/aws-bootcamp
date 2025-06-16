@@ -451,7 +451,7 @@ id,name,department,salary,hire_date,location
    - Click **Create crawler**
 
 2. **Crawler Configuration**
-   - **Name:** `EmployeeDataCrawler`
+   - **Name:** `aws-bootcamp-[name]-EmployeeDataCrawler`
    - **Description:** Crawler for employee CSV data
 
 3. **Data Source Configuration**
