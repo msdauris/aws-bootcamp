@@ -54,7 +54,7 @@
 6. **Finalize**
    - Click "Create Trail"
 
-📝 **Note:** CloudTrail starts recording immediately but events may take a few minutes to appear in logs.
+📝 **Note:** CloudTrail starts recording immediately but events may take a few minutes to appear in logs. >>> more info here https://github.com/msdauris/aws-bootcamp/blob/main/cloudtrail.md
 
 ---
 
