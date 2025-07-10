@@ -22,12 +22,13 @@
 The load balancer will:
 - Listen for traffic on port 80 (or 443 for HTTPS)
 - Route traffic to respective target groups:
+
+- In aem we'd for example route to:
   - **Author instances:** Port 4502
   - **Publisher instances:** Port 4503
 - Ensure standard web traffic (port 80/443) is correctly routed to AEM instances on their respective ports
 
 #### Security Considerations
-
 - Configure security groups to allow traffic on required ports
 - Restrict access to only trusted sources
 - Use HTTPS with SSL certificates for production environments
@@ -38,6 +39,22 @@ Traffic routing based on application requirements with proper port mapping and s
 ---
 
 ## 17. ALB Configuration Walkthrough
+
+####Prerequisite
+1. Create NAT Gateway FIRST (before launching instances)
+
+- Create NAT Gateway in your public subnet
+- Ensure it gets an Elastic IP
+- Critical: Do this before launching private instances
+
+2. Configure Route Tables
+
+- Private subnet route table should have:
+- 0.0.0.0/0 → NAT Gateway (for internet access)
+- Local VPC CIDR → Local (for internal communication)
+
+Now your instances will have internet access through NAT Gateway
+They can download packages, updates, software during launch
 
 ### Step-by-Step ALB Setup
 
@@ -58,41 +75,39 @@ Traffic routing based on application requirements with proper port mapping and s
    - **Scheme:** Internet-facing (for public access)
    - **IP Address Type:** IPv4
 
-4. **Listeners Configuration**
-   - Add **HTTP (port 80)** listener
-   - Add **HTTPS (port 443)** listener (if needed)
-   - If using HTTPS, assign SSL certificate from ACM
-
-5. **Availability Zones**
+4. **Availability Zones**
    - Select your VPC
-   - Choose at least 2 availability zones
-   - Select appropriate subnets
+   - Choose at least 2 availability zones within public 
+   - Select appropriate public subnets
 
-6. **Security Groups**
-   - Select or create security groups
+5. **Security Groups**
+   - Select aws-bootcamp-public-subnet (web)
    - Allow traffic on required ports:
      - HTTP: Port 80
      - HTTPS: Port 443
      - Custom ports: 4502, 4503
 
-7. **Configure Routing**
+6. **Configure Routing**
    - Create **Target Groups**:
 
-   **Author Target Group:**
+   **Example Author Target Group:**
    - **Name:** `author-target-group`
    - **Protocol:** HTTP
    - **Port:** 4502
    - **Health Check Path:** `/system/console/bundles`
 
-   **Publisher Target Group:**
+   **Example Publisher Target Group:**
    - **Name:** `publisher-target-group`
    - **Protocol:** HTTP
    - **Port:** 4503
    - **Health Check Path:** `/system/console/bundles`
+  
+7. **Listeners Configuration**
+   - Add **HTTP (port 80)** listener
+   - Add **HTTPS (port 443)** listener (if needed)
+   - If using HTTPS, assign SSL certificate from ACM
 
 8. **Register Targets**
-   - Add Author instance to the 4502 target group
-   - Add Publisher instances to the 4503 target group
 
 9. **Create Load Balancer**
    - Review all settings
