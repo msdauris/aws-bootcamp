@@ -57,6 +57,23 @@ Traffic routing based on application requirements with proper port mapping and s
 Now your instances will have internet access through NAT Gateway
 They can download packages, updates, software during launch
 
+2. Launch two private instances
+
+- Private A
+- Private B
+
+> ✅ **Tip:** Think **first boot, root access** — automates setup without manual login.
+
+   ```bash
+   #!/bin/bash
+   # Install and configure Apache web server
+   yum update -y
+   yum install -y httpd
+   systemctl start httpd
+   systemctl enable httpd
+   echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
+   ```
+
 ### Step-by-Step ALB Setup
 
 **Objective:** Configure Application Load Balancer with detailed instructions
