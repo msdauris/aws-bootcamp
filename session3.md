@@ -40,7 +40,7 @@ Traffic routing based on application requirements with proper port mapping and s
 
 ## 17. ALB Configuration Walkthrough
 
-####Prerequisite
+#### Prerequisites
 1. Create NAT Gateway FIRST (before launching instances)
 
 - Create NAT Gateway in your public subnet
