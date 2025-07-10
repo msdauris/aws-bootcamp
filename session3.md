@@ -42,6 +42,7 @@ Traffic routing based on application requirements with proper port mapping and s
 
 #### Prerequisites
 1. Create NAT Gateway FIRST (before launching instances)
+   see https://github.com/msdauris/aws-bootcamp/blob/main/vpc.png 
 
 - Create NAT Gateway in your public subnet
 - Ensure it gets an Elastic IP
