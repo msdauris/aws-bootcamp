@@ -38,7 +38,7 @@ At the end? You’ll walk away with real AWS skills — and the fire to go furth
 
 ## 🔐 AWS Account & Region
 
-- **Login:** [AWS Console](https://730492949633.signin.aws.amazon.com/console)  
+- **Login:** [AWS Console](https://signin.aws.amazon.com/console)  
 - **Region:** `eu-west-1 (Ireland)` — **LOCKED**
 
 ---
