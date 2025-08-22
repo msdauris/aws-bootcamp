@@ -40,7 +40,7 @@ Traffic routing based on application requirements with proper port mapping and s
 
 ## 17. ALB Configuration Walkthrough
 
-#### Prerequisites
+#### Prerequisites for saregent - show operators!
 1. Create NAT Gateway FIRST (before launching instances)
    see https://github.com/msdauris/aws-bootcamp/blob/main/vpc.png 
 
