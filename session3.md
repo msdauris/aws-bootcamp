@@ -144,6 +144,78 @@ They can download packages, updates, software during launch
 3. **Test Load Balancer**
    - Use ALB DNS name to access applications
    - Verify traffic routing to correct instances
+  
+#### Troubleshooting 
+
+## Problem
+- Application Load Balancer (ALB) shows **unhealthy targets**, even though:
+  - EC2 instances are running  
+  - Security groups are correctly configured  
+  - Apache (`httpd`) service is running  
+
+---
+
+## Root Cause
+- ALB health checks require **HTTP 200 responses**.  
+- Default Apache without an `index.html` returns **HTTP 403 Forbidden**, causing health check failures.  
+- Sometimes the user-data script fails (e.g., yum repo inaccessible), leaving the document root empty.
+
+---
+
+## Step-by-Step Troubleshooting
+
+1. **Verify Security Groups**
+   - ALB SG allows outbound to target instances on health check port (e.g., 80) ✅  
+   - Target instance SG allows inbound from ALB SG on port 80 ✅  
+
+2. **Verify Service Status**
+   - Apache running: `sudo systemctl status httpd` ✅  
+   - Listening on correct port and interfaces: `sudo netstat -tulpn | grep :80` ✅  
+
+3. **Test Local Connectivity**
+   - On the instance:  
+     ```bash
+     curl -I localhost
+     curl -I http://<private-IP>
+     ```  
+   - If `HTTP 403 Forbidden` → problem is **missing web content**, not networking ❌  
+
+4. **Check Network Between Instances (Optional)**
+   - Verify instances can communicate:  
+     ```bash
+     nc -vz <other-private-IP> 80
+     ```
+   - Confirms SG, routing, and subnets are correct  
+
+5. **Fix Web Content**
+   - Create a simple `index.html` file in the Apache document root:  
+     ```bash
+     echo "<h1>Hello from $(hostname -f)</h1>" | sudo tee /var/www/html/index.html
+     ```
+   - Verify returns `HTTP 200 OK`:  
+     ```bash
+     curl -I localhost
+     curl -I http://<private-IP>
+     ```
+
+6. **Check ALB Health Checks**
+   - Ensure health check path matches `/index.html` or existing page  
+   - ALB targets should now change from **unhealthy → healthy** within seconds  
+
+---
+
+## Key Lessons
+- **403 Forbidden** usually indicates missing content or permission issues, not SG/network issues  
+- Always **test locally first** with `curl localhost`  
+- Use `sudo tee` when creating files in root-owned directories  
+- Ensure **each private instance has proper content** for ALB health checks  
+
+---
+
+## Optional Prevention
+- Include `index.html` creation in **user-data scripts** on instance launch  
+- Validate scripts complete successfully (yum/apt commands, file creation)  
+
 
 ---
 
