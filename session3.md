@@ -48,6 +48,35 @@ Traffic routing based on application requirements with proper port mapping and s
 - Ensure it gets an Elastic IP
 - Critical: Do this before launching private instances
 
+#### Using AWS Systems Manager (SSM) Session Manager for Private Instances
+
+## Problem
+- Private EC2 instances cannot be accessed via SSH directly (no public IP / port 22 closed)  
+- NAT Gateway is **not required** when using SSM  
+
+---
+
+## Solution
+Use **AWS Systems Manager (SSM) Session Manager** to securely access private instances.
+
+---
+
+## Step 1: Attach IAM Role to EC2 Instance
+1. Create an IAM role with **AmazonSSMManagedInstanceCore** policy  
+2. Attach the role to the private EC2 instance  
+3. Verify the role is attached in the EC2 console  
+
+> Note: If attaching the role to a running instance, **reboot** to register it with SSM.
+
+---
+
+## Step 2: Verify SSM Agent
+- Ensure the SSM Agent is installed and running:
+
+```bash
+sudo systemctl status amazon-ssm-agent
+
+
 2. Configure Route Tables
 
 - Private subnet route table should have:
