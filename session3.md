@@ -47,8 +47,8 @@ Traffic routing based on application requirements with proper port mapping and s
 - Create NAT Gateway in your public subnet
 - Ensure it gets an Elastic IP
 - Critical: Do this before launching private instances
-
-#### Using AWS Systems Manager (SSM) Session Manager for Private Instances
+- > Note: Nat Gateway not required!! 
+## Using AWS Systems Manager (SSM) Session Manager for Private Instances
 
 ## Problem
 - Private EC2 instances cannot be accessed via SSH directly (no public IP / port 22 closed)  
@@ -102,6 +102,8 @@ They can download packages, updates, software during launch
    systemctl enable httpd
    echo "<h1>Hello World from $(hostname -f)</h1>" > /var/www/html/index.html
    ```
+
+---
 
 ### Step-by-Step ALB Setup
 
