@@ -195,6 +195,11 @@ They can download packages, updates, software during launch
 
 ## Step-by-Step Troubleshooting
 
+```bash
+sudo yum install -y telnet
+sudo yum install -y nc
+```
+
 1. **Verify Security Groups**
    - ALB SG allows outbound to target instances on health check port (e.g., 80) ✅  
    - Target instance SG allows inbound from ALB SG on port 80 ✅  
